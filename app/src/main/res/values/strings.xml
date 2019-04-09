@@ -1,4 +1,6 @@
 <resources>
     <string name="app_name">GitHubTop</string>
 	<string name="xx_contributions">%d contributions</string>
+	<string name="label_todo">User\'s position should be displayed somewhere here</string>
+	<string name="xx_details">Contributor id %d</string>
 </resources>

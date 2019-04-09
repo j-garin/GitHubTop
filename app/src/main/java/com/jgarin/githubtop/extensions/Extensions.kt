@@ -7,7 +7,7 @@ import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.Observer
 import com.google.android.material.snackbar.Snackbar
-import com.jgarin.githubtop.Resource
+import com.jgarin.githubtop.wrappers.Resource
 import io.reactivex.Flowable
 import io.reactivex.Single
 
@@ -31,9 +31,24 @@ fun <T, R> Flowable<T>.forkJoin(vararg func: Flowable<T>.() -> Flowable<R>): Flo
 }
 
 fun <T> Single<T>.wrapWithResource(): Flowable<Resource<T>> {
-	return flatMapPublisher { Flowable.just(Resource(it, Resource.Status.Success)) }
-			.startWith(Resource<T>(null, Resource.Status.Loading))
-			.onErrorReturn { Resource(null, Resource.Status.Error(it)) }
+	return flatMapPublisher { Flowable.just(
+        Resource(
+            it,
+            Resource.Status.Success
+        )
+    ) }
+			.startWith(
+                Resource<T>(
+                    null,
+                    Resource.Status.Loading
+                )
+            )
+			.onErrorReturn {
+                Resource(
+                    null,
+                    Resource.Status.Error(it)
+                )
+            }
 }
 
 fun <T> LiveData<T>.observeNotNull(owner: LifecycleOwner, observer: (T) -> Unit) {

@@ -1,4 +1,4 @@
-package com.jgarin.githubtop
+package com.jgarin.githubtop.wrappers
 
 data class Resource<T>(val data: T?, val status: Status) {
 

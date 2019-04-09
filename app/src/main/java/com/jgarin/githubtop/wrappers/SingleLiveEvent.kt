@@ -1,4 +1,4 @@
-package com.jgarin.githubtop
+package com.jgarin.githubtop.wrappers
 
 /**
  * A wrapper class that returns the content only if it hasn't been handled yet

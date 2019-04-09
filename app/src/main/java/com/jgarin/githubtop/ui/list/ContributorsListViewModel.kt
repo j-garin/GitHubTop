@@ -4,8 +4,8 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.jgarin.githubtop.Resource
-import com.jgarin.githubtop.SingleLiveEvent
+import com.jgarin.githubtop.wrappers.Resource
+import com.jgarin.githubtop.wrappers.SingleLiveEvent
 import com.jgarin.githubtop.api.Api
 import com.jgarin.githubtop.extensions.forkJoin
 import com.jgarin.githubtop.extensions.wrapWithResource

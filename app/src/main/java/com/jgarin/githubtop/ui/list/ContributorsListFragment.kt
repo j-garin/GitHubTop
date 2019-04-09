@@ -7,6 +7,8 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.DiffUtil
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.jgarin.githubtop.R
 import com.jgarin.githubtop.extensions.observeNotNull
 import com.jgarin.githubtop.extensions.snackbar
@@ -15,6 +17,7 @@ import com.jgarin.githubtop.ui.ContributorsListApplication
 import com.jgarin.githubtop.ui.list_base.DiffListAdapter
 import com.jgarin.githubtop.ui.Navigator
 import com.jgarin.githubtop.ui.list_base.Presenter
+import com.jgarin.githubtop.ui.list_base.SpaceItemDecoration
 import kotlinx.android.synthetic.main.fragment_repos_list.*
 import java.lang.IllegalStateException
 
@@ -47,6 +50,12 @@ class ContributorsListFragment : Fragment(), Presenter.ItemClickListener<Contrib
 
 	override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
 		return inflater.inflate(R.layout.fragment_repos_list, container, false)
+	}
+
+	override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+		recyclerView.layoutManager = LinearLayoutManager(recyclerView.context, RecyclerView.VERTICAL, false)
+		recyclerView.addItemDecoration(SpaceItemDecoration(recyclerView.context, R.dimen.list_item_spacing))
+		recyclerView.adapter = adapter
 	}
 
 	private fun renderState(state: ContributorsListViewModel.State) {
