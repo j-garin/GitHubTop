@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">GitHubTop</string>
+	<string name="xx_contributions">%d contributions</string>
+</resources>
